@@ -1,0 +1,39 @@
+name: Generate Release Assets
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install python-pptx pillow cairosvg
+
+      - name: Generate PPTX and ZIP
+        run: python scripts/generate_release.py
+
+      - name: Commit generated assets
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: GitHub Actions
+          author_email: actions@github.com
+          message: "Add generated PPTX and release ZIP"
+          add: "release/todo-design.pptx release/todo-django-v1.0.zip"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-assets
+          path: |
+            release/todo-design.pptx
+            release/todo-django-v1.0.zip
