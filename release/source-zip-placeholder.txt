@@ -1,0 +1,5 @@
+此文件为源码压缩包占位（todo-django-v1.0.zip）。
+
+请在仓库页面点击 Code -> Download ZIP 以获取源码的实时压缩包。
+
+如果你需要我在仓库中上传一个独立的 ZIP 文件（todo-django-v1.0.zip），请回复并允许我上传二进制压缩包，我会把打包文件放到 /release/ 目录供下载。
