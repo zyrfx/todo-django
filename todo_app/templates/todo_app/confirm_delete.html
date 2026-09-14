@@ -1,0 +1,10 @@
+{% extends "todo_app/base.html" %}
+{% block content %}
+<h4>确认删除</h4>
+<form method="post">
+  {% csrf_token %}
+  <p>确定删除任务：<strong>{{ task.title }}</strong> 吗？</p>
+  <button type="submit" class="btn btn-danger">确定删除</button>
+  <a class="btn btn-link" href="{% url 'todo_app:task_list' %}">取消</a>
+</form>
+{% endblock %}

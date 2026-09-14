@@ -1,0 +1,17 @@
+{% extends "todo_app/base.html" %}
+{% block content %}
+<h4>任务详情</h4>
+<div class="card">
+  <div class="card-body">
+    <h5>{{ task.title }}</h5>
+    <p>{{ task.description|linebreaks }}</p>
+    <p>优先级：{{ task.get_priority_display }}</p>
+    <p>状态：{{ task.get_status_display }}</p>
+    <p>截止：{{ task.due_date }}</p>
+    <p>创建：{{ task.created_at }}</p>
+    <a class="btn btn-sm btn-info" href="{% url 'todo_app:task_update' task.id %}">编辑</a>
+    <a class="btn btn-sm btn-secondary" href="{% url 'todo_app:task_toggle_status' task.id %}">切换状态</a>
+    <a class="btn btn-sm btn-link" href="{% url 'todo_app:task_list' %}">返回列表</a>
+  </div>
+</div>
+{% endblock %}
